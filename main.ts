@@ -1,3 +1,6 @@
+input.onGesture(Gesture.Shake, function () {
+    radio.sendString("d")
+})
 let bigger = 0
 radio.setGroup(123)
 let setup = input.compassHeading()
@@ -28,12 +31,10 @@ basic.forever(function () {
             } else {
                 radio.sendString("l")
             }
+        } else if (input.compassHeading() > setup || input.compassHeading() < setupR) {
+            radio.sendString("r")
         } else {
-            if (input.compassHeading() > setup || input.compassHeading() < setupR) {
-                radio.sendString("r")
-            } else {
-                radio.sendString("l")
-            }
+            radio.sendString("l")
         }
     }
 })
