@@ -13,11 +13,12 @@ if (setupL < 0) {
     setupL += 360
 }
 if (0 < setup - setupR) {
-    bigger = 0
-} else {
     bigger = 1
+} else {
+    bigger = 0
 }
 basic.forever(function () {
+    basic.pause(1000)
     if (input.buttonIsPressed(Button.A)) {
         radio.sendString("a")
     } else if (input.buttonIsPressed(Button.B)) {
@@ -31,10 +32,12 @@ basic.forever(function () {
             } else {
                 radio.sendString("l")
             }
-        } else if (input.compassHeading() > setup || input.compassHeading() < setupR) {
-            radio.sendString("r")
-        } else {
-            radio.sendString("l")
+        } else if (bigger == 1) {
+            if (input.compassHeading() > setup || input.compassHeading() < setupR) {
+                radio.sendString("r")
+            } else {
+                radio.sendString("l")
+            }
         }
     }
 })

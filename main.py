@@ -1,3 +1,7 @@
+def on_gesture_shake():
+    radio.send_string("d")
+input.on_gesture(Gesture.SHAKE, on_gesture_shake)
+
 bigger = 0
 radio.set_group(123)
 setup = input.compass_heading()
@@ -13,6 +17,7 @@ else:
     bigger = 1
 
 def on_forever():
+    basic.pause(1000)
     if input.button_is_pressed(Button.A):
         radio.send_string("a")
     elif input.button_is_pressed(Button.B):
