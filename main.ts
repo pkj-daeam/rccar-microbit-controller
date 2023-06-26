@@ -27,13 +27,13 @@ basic.forever(function () {
         radio.sendString("c")
     } else if (input.compassHeading() != setup) {
         if (bigger == 0) {
-            if (input.compassHeading() < setup || input.compassHeading() > setupR) {
+            if (input.compassHeading() < setup && input.compassHeading() > setupR) {
                 radio.sendString("r")
             } else {
                 radio.sendString("l")
             }
         } else if (bigger == 1) {
-            if (input.compassHeading() > setup || input.compassHeading() < setupR) {
+            if (input.compassHeading() > setup && input.compassHeading() < setupR) {
                 radio.sendString("r")
             } else {
                 radio.sendString("l")
